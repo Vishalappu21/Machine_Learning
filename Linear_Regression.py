@@ -37,10 +37,10 @@ line = intercept+(slope*x)
 plt.plot(x,line,color = 'blue',label = 'Regression Line')
 # plt.legend()
 # for x column change into 2D
-x = data_set[['rm']]
-y = data_set['medv']
+a = data_set[['rm']]
+b = data_set['medv']
 model = LinearRegression()
-model.fit(x,y)
+model.fit(a,b)
 slope = model.coef_[0]
 intercept = model.intercept_
 print(f"slope is {slope} and intercepts is {intercept}")
@@ -97,8 +97,8 @@ group_by = data_set[['Branch','Branch_Encode']].groupby('Branch_Encode')
 print(group_by.count())
 # Linear Regression Parr
 model = LinearRegression()
-x = data_set[['University_Encode']]
-y = data_set['Branch_Encode']
+x_1 = data_set[['University_Encode']]
+y_1 = data_set['Branch_Encode']
 model.fit(x,y)
 slope = model.coef_[0]
 intercept = model.intercept_
@@ -110,8 +110,9 @@ r2_score_pred = r2_score(y_test,y_prediction)
 mean_squared_error_pred = mean_squared_error(y_test,y_prediction)
 print(f"r2_pred: {r2_score_pred},mean_pred: {mean_squared_error_pred}")
 # visualization..
-plt.scatter(x=x,y=y, color = 'lightcoral',label = 'Data Points')
+plt.scatter(x=x_1,y=y_1, color = 'lightcoral',label = 'Data Points')
 line = intercept+(slope*x)
 plt.plot(x,line,color = 'blue',label = 'Regression Line')
 plt.legend()
 plt.show()
+print('Hello')
