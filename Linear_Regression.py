@@ -32,42 +32,43 @@ print(intercept)
 LinearRegression_for = intercept+(slope*mean_x)
 print(f"LinearRegression: {LinearRegression_for}")
 # visualization..
-plt.scatter(x=x,y=y, color = 'lightcoral',label = 'Data Points')
-line = intercept+(slope*x)
-plt.plot(x,line,color = 'blue',label = 'Regression Line')
-# plt.legend()
-# for x column change into 2D
-a = data_set[['rm']]
-b = data_set['medv']
-model = LinearRegression()
-model.fit(a,b)
-slope = model.coef_[0]
-intercept = model.intercept_
-print(f"slope is {slope} and intercepts is {intercept}")
-rooms = 2
-predict_outcomes = model.predict([[rooms]])
-print(predict_outcomes[0])
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.2,random_state=42)
-print(x_train,x_test,y_train,y_test)
-model.fit(x_train,y_train)
-y_pred = model.predict(x_test)
-r_square = r2_score(y_test,y_pred)
-mean_squared_error_1 = mean_squared_error(y_test,y_pred)
-print(r_square,mean_squared_error_1)
-x = data_set[['crim']]
-y = data_set['medv']
-# y = mx +c
-model = LinearRegression()
-model.fit(x,y)
-slope = model.coef_[0]
-intercept = model.intercept_
-print(f"slope: {slope},intercept: {intercept}")
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
-model.fit(x_train,y_train)
-y_predict = model.predict(x_test)
-r2_score_predict = r2_score(y_test,y_predict)
-mean_squared_error_predict = mean_squared_error(y_test,y_predict)
-print(r2_score_predict,mean_squared_error_predict)
+# plt.scatter(x=x,y=y, color = 'lightcoral',label = 'Data Points')
+# line = intercept+(slope*x)
+# plt.plot(x,line,color = 'blue',label = 'Regression Line')
+# # plt.legend()
+# # for x column change into 2D
+# a = data_set[['rm']]
+# b = data_set['medv']
+# model = LinearRegression()
+# model.fit(a,b)
+# slope = model.coef_[0]
+# intercept = model.intercept_
+# print(f"slope is {slope} and intercepts is {intercept}")
+# rooms = 2
+# predict_outcomes = model.predict([[rooms]])
+# print(predict_outcomes[0])
+# x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.2,random_state=42)
+# print(x_train,x_test,y_train,y_test)
+# model.fit(x_train,y_train)
+# y_pred = model.predict(x_test)
+# r_square = r2_score(y_test,y_pred)
+# mean_squared_error_1 = mean_squared_error(y_test,y_pred)
+# print(r_square,mean_squared_error_1)
+# x = data_set[['crim']]
+# y = data_set['medv']
+# # y = mx +c
+# model = LinearRegression()
+# model.fit(x,y)
+# slope = model.coef_[0]
+# intercept = model.intercept_
+# print(f"slope: {slope},intercept: {intercept}")
+# x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
+# model.fit(x_train,y_train)
+# y_predict = model.predict(x_test)
+# r2_score_predict = r2_score(y_test,y_predict)
+# mean_squared_error_predict = mean_squared_error(y_test,y_predict)
+# print(r2_score_predict,mean_squared_error_predict)
+# New ED Data Set
 data_set = pd.read_csv("C:\\Users\\vishalappu\\Desktop\\Office\\OEC_PROJECT\\Merge_Data\\OEC_Over_all_06_02.csv")
 print(data_set.columns)
 num_colum = data_set.select_dtypes(include='number').columns.tolist()
@@ -95,15 +96,15 @@ mapping_branch = dict(zip(B_le.classes_,B_le.transform(B_le.classes_)))
 # print(mapping_branch)
 group_by = data_set[['Branch','Branch_Encode']].groupby('Branch_Encode')
 print(group_by.count())
-# Linear Regression Parr
+# Linear Regression Part
 model = LinearRegression()
 x_1 = data_set[['University_Encode']]
 y_1 = data_set['Branch_Encode']
-model.fit(x,y)
+model.fit(x_1,y_1)
 slope = model.coef_[0]
 intercept = model.intercept_
 print(f"slope: {slope} and intercepts: {intercept}")
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
+x_train,x_test,y_train,y_test = train_test_split(x_1,y_1,test_size=0.2,random_state=42)
 model.fit(x_train,y_train)
 y_prediction = model.predict(x_test)
 r2_score_pred = r2_score(y_test,y_prediction)
@@ -115,4 +116,3 @@ line = intercept+(slope*x)
 plt.plot(x,line,color = 'blue',label = 'Regression Line')
 plt.legend()
 plt.show()
-print('Hello')
